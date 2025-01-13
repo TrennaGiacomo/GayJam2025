@@ -1,10 +1,17 @@
 extends Sprite2D
 
-class_name draggable
+class_name guy
 
 var cam: Camera2D
 @onready var area = $'./Area2D' as Area2D
 @onready var col = $'./Area2D/CollisionShape2D' as CollisionShape2D
+
+@export var walkSpeed: float = 100.0
+
+@export var isDraggable: bool = true
+@export var isWalkingToTarget: bool = true
+
+var targetPoint: Vector2
 
 var beingMoved: bool
 var mouseOffset: Vector2
@@ -18,10 +25,19 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if (not cam):
 		printerr("draggable._process: No camera!")
+		
 	if (beingMoved):
 		var mousePos = cam.get_local_mouse_position()
 		var offsetPos = mousePos + mouseOffset
 		position = offsetPos
+		
+	if (!isDraggable):
+		beingMoved = false
+		
+	if (!beingMoved && isWalkingToTarget):
+		var direction = (targetPoint - position).normalized()
+		var movement = direction * walkSpeed * delta
+		position += movement
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -31,7 +47,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 	
 	if (event is InputEventMouseButton):
 		if (event.button_index == MOUSE_BUTTON_LEFT):
-			if (event.is_pressed()):
+			if (event.is_pressed() && isDraggable && !beingMoved):
 				var mousePos = cam.get_local_mouse_position()
 				mouseOffset = position - mousePos
 				beingMoved = true
