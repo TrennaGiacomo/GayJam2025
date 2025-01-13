@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=3 uid="uid://dckfrmx8kq350"]
+
+[ext_resource type="FontFile" uid="uid://cf6ex1qvt6uj2" path="res://GamjaFlower-Regular.ttf" id="1_ql6na"]
+[ext_resource type="Script" path="res://mainmenu/main_menu.gd" id="1_vsi6x"]
+[ext_resource type="Texture2D" uid="uid://ccy2r3xl2xmgl" path="res://icon.svg" id="2_wcc7f"]
+[ext_resource type="Script" path="res://mainmenu/swayAnimator.gd" id="3_3gbfh"]
+
+[sub_resource type="Gradient" id="Gradient_1mewx"]
+colors = PackedColorArray(0.286275, 0.654902, 1, 1, 0.284563, 0.653099, 0.999993, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lks1g"]
+gradient = SubResource("Gradient_1mewx")
+
+[sub_resource type="LabelSettings" id="LabelSettings_j85pe"]
+font = ExtResource("1_ql6na")
+font_size = 60
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vsi6x")
+mainScene = "res://game.tscn"
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -56.0
+offset_right = 112.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lks1g")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = -155.0
+offset_right = 414.0
+offset_bottom = -72.0
+grow_vertical = 2
+text = "Le Gay game"
+label_settings = SubResource("LabelSettings_j85pe")
+
+[node name="SkierImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 117.0
+offset_top = -129.0
+offset_right = 364.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(123, 123)
+texture = ExtResource("2_wcc7f")
+script = ExtResource("3_3gbfh")
+animAmount = 1.0
+animSpeed = 1.0
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 55.0
+offset_top = -93.0
+offset_right = 314.0
+offset_bottom = 89.0
+grow_vertical = 2
+
+[node name="StartGameButton" type="Button" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits"
+
+[node name="CreditsButton" type="Button" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -57.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start game"
+
+[node name="ExitButton" type="Button" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 24.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+
+[connection signal="pressed" from="Buttons/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="Buttons/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_exit_button_pressed"]

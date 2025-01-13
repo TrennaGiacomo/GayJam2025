@@ -6,6 +6,10 @@
 [node name="skilift" type="Node2D"]
 position = Vector2(497, 255)
 script = ExtResource("1_gm70p")
+minTime = null
+maxTime = null
+minSize = null
+maxSize = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7h7ks")
