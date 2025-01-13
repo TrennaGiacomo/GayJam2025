@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://n46rv3rp16p8"]
+
+[ext_resource type="Texture2D" uid="uid://ccy2r3xl2xmgl" path="res://icon.svg" id="1_7h7ks"]
+[ext_resource type="Script" path="res://skilift/skilift.gd" id="1_gm70p"]
+
+[node name="skilift" type="Node2D"]
+position = Vector2(497, 255)
+script = ExtResource("1_gm70p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7h7ks")
