@@ -25,7 +25,30 @@ func MakeSeats(seatCount:int):
 	arrange_sprites()
 		
 func arrange_sprites():
+	var total_width = 0
+	var total_height = 0
+	var sprite_count = 0
+
+	# Calculate total width/height of all sprites
+	for child in get_children():
+		if child is Sprite2D:
+			sprite_count += 1
+			total_width += child.texture.get_width() + spacing
+			total_height += child.texture.get_height() + spacing
+
+	# Remove extra spacing after the last sprite
+	if sprite_count > 0:
+		total_width -= spacing
+		total_height -= spacing
+
+	# Calculate starting offset for centering
 	var offset = Vector2.ZERO
+	if layout_mode == "horizontal":
+		offset.x = -total_width / 2
+	elif layout_mode == "vertical":
+		offset.y = -total_height / 2
+
+	# Position the sprites
 	for child in get_children():
 		if child is Sprite2D:
 			child.position = offset
