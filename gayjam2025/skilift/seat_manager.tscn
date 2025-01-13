@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://boox2t4owlwjq"]
+
+[ext_resource type="Script" path="res://skilift/seat_manager.gd" id="1_jn4uf"]
+
+[node name="SeatManager" type="Node2D"]
+script = ExtResource("1_jn4uf")
+seatpath = "res://seat.gd"

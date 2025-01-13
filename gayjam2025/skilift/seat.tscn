@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7mtp1b0l2lw6"]
+
+[ext_resource type="Script" path="res://skilift/seat.gd" id="1_06yod"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_oo813"]
+
+[node name="Seat" type="Sprite2D"]
+scale = Vector2(40, 40)
+texture = SubResource("PlaceholderTexture2D_oo813")
+script = ExtResource("1_06yod")
