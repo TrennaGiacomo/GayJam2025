@@ -1,20 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://w81635vhhmj"]
+[gd_scene load_steps=4 format=3 uid="uid://q83xvdggh72m"]
 
-[ext_resource type="PackedScene" uid="uid://77nvr0u3unc0" path="res://characters/guy.tscn" id="1_4xp02"]
 [ext_resource type="PackedScene" uid="uid://n46rv3rp16p8" path="res://skilift/skilift.tscn" id="2_nm3s0"]
-[ext_resource type="PackedScene" uid="uid://y1jt16w2al1j" path="res://hud.tscn" id="3_8hwvo"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_64fcf"]
-resource_local_to_scene = true
-size = Vector2(64, 64)
+[ext_resource type="PackedScene" path="res://hud.tscn" id="3_8hwvo"]
+[ext_resource type="PackedScene" uid="uid://chfvnuldgslkt" path="res://characters/guyManager.tscn" id="4_meiug"]
 
 [node name="Game" type="Node2D"]
-
-[node name="Guy" parent="." instance=ExtResource("1_4xp02")]
-texture = SubResource("PlaceholderTexture2D_64fcf")
 
 [node name="skilift" parent="." instance=ExtResource("2_nm3s0")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="HUD" parent="." instance=ExtResource("3_8hwvo")]
+
+[node name="GuyManager" parent="." instance=ExtResource("4_meiug")]
+
+[node name="SpawnPoint" type="Node2D" parent="GuyManager"]
+position = Vector2(-452, 218)
+
+[node name="WalkTarget" type="Node2D" parent="GuyManager"]
