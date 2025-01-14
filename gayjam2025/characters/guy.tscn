@@ -1,17 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://77nvr0u3unc0"]
+[gd_scene load_steps=5 format=3 uid="uid://77nvr0u3unc0"]
 
 [ext_resource type="Script" path="res://characters/guy.gd" id="1_q2jt0"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0llfh"]
-resource_local_to_scene = true
-size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypiaw"]
 size = Vector2(64, 64)
 
-[node name="Guy" type="Sprite2D"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ygeed"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adbqn"]
+size = Vector2(66, 66)
+
+[node name="Guy" type="RigidBody2D"]
 position = Vector2(32, 32)
-texture = SubResource("PlaceholderTexture2D_0llfh")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
 script = ExtResource("1_q2jt0")
 walkSpeed = 150.0
 dragSpeed = 5.0
@@ -20,5 +23,12 @@ dragSpeed = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ypiaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(64, 64)
+texture = SubResource("PlaceholderTexture2D_ygeed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_adbqn")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

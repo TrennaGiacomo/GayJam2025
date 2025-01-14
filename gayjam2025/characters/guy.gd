@@ -1,4 +1,4 @@
-extends Sprite2D
+extends RigidBody2D
 
 class_name guy
 
@@ -19,6 +19,8 @@ var targetPoint: Vector2
 var beingMoved: bool
 var mouseOffset: Vector2
 
+var groupId: int;
+
 func _ready() -> void:
 	cam = $'/root/Game/Camera2D' as Camera2D
 	if (not cam):
@@ -32,13 +34,13 @@ func _process(delta: float) -> void:
 	if (beingMoved):
 		var mousePos = cam.get_local_mouse_position()
 		var offsetPos = mousePos + mouseOffset
-		position = lerp(position, offsetPos, dragSpeed * delta)
+		move_and_collide(lerp(position, offsetPos, dragSpeed * delta) - position)
 		
 	if (!isDraggable):
 		beingMoved = false
 		
 	if (!beingMoved && isWalkingToTarget):
-		position = position.move_toward(targetPoint, walkSpeed*delta);
+		move_and_collide(position.move_toward(targetPoint, walkSpeed*delta) - position);
 
 func _unhandled_input(event: InputEvent):
 	if(event is InputEventMouseButton):
