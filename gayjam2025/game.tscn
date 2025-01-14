@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://w81635vhhmj"]
+[gd_scene load_steps=4 format=3 uid="uid://w81635vhhmj"]
 
 [ext_resource type="PackedScene" uid="uid://n46rv3rp16p8" path="res://skilift/skilift.tscn" id="2_nm3s0"]
 [ext_resource type="PackedScene" uid="uid://y1jt16w2al1j" path="res://hud.tscn" id="3_8hwvo"]
 [ext_resource type="PackedScene" path="res://characters/guyManager.tscn" id="4_meiug"]
-[ext_resource type="PackedScene" uid="uid://boox2t4owlwjq" path="res://skilift/seat_manager.tscn" id="5_aiwes"]
 
 [node name="Game" type="Node2D"]
 
 [node name="skilift" parent="." instance=ExtResource("2_nm3s0")]
+position = Vector2(-147, 6)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -19,6 +19,3 @@
 position = Vector2(-452, 218)
 
 [node name="WalkTarget" type="Node2D" parent="GuyManager"]
-
-[node name="SeatManager" parent="." instance=ExtResource("5_aiwes")]
-seatpath = "res://skilift/seat.tscn"
