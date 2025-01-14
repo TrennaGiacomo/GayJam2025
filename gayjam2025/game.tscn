@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://n46rv3rp16p8" path="res://skilift/skilift.tscn" id="2_nm3s0"]
 [ext_resource type="PackedScene" uid="uid://y1jt16w2al1j" path="res://hud.tscn" id="3_8hwvo"]
-[ext_resource type="PackedScene" path="res://characters/guyManager.tscn" id="4_meiug"]
+[ext_resource type="PackedScene" uid="uid://chfvnuldgslkt" path="res://characters/guyManager.tscn" id="4_meiug"]
 
 [node name="Game" type="Node2D"]
 

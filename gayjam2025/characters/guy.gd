@@ -1,4 +1,4 @@
-extends Sprite2D
+extends RigidBody2D
 
 class_name guy
 
@@ -8,13 +8,19 @@ var cam: Camera2D
 
 @export var walkSpeed: float = 100.0
 
+
 @export var isDraggable: bool = true
+@export var dragSpeed: float = 1.0;
+
 @export var isWalkingToTarget: bool = true
 
 var targetPoint: Vector2
 
 var beingMoved: bool
 var mouseOffset: Vector2
+
+var groupId: int;
+var manager: guyManager;
 
 func _ready() -> void:
 	cam = $'/root/Game/Camera2D' as Camera2D
@@ -29,14 +35,18 @@ func _process(delta: float) -> void:
 	if (beingMoved):
 		var mousePos = cam.get_local_mouse_position()
 		var offsetPos = mousePos + mouseOffset
-		position = offsetPos
+		move_and_collide(lerp(position, offsetPos, dragSpeed * delta) - position)
 		
 	if (!isDraggable):
 		beingMoved = false
 		
 	if (!beingMoved && isWalkingToTarget):
-		position = position.move_toward(targetPoint, walkSpeed*delta);
+		move_and_collide(position.move_toward(targetPoint, walkSpeed*delta) - position);
 
+func _unhandled_input(event: InputEvent):
+	if(event is InputEventMouseButton):
+		if(event.is_released() && beingMoved):
+			beingMoved = false;
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if (not cam):
@@ -49,5 +59,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 				var mousePos = cam.get_local_mouse_position()
 				mouseOffset = position - mousePos
 				beingMoved = true
+				manager.startMovingGroup(groupId);
 			else:
 				beingMoved = false
