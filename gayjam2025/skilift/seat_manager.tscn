@@ -5,3 +5,10 @@
 [node name="SeatManager" type="Node2D"]
 script = ExtResource("1_jn4uf")
 seatpath = "res://seat.gd"
+
+[node name="SeatCountTextLabel" type="Label" parent="."]
+offset_left = -28.0
+offset_top = -57.0
+offset_right = 26.0
+offset_bottom = -34.0
+text = "3 seats"

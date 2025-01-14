@@ -1,6 +1,6 @@
 extends Node2D
 @export_file var seatpath
-
+@onready var seat_count_text_label: Label = $SeatCountTextLabel
 @onready var seatScene=load(seatpath) as PackedScene
 
 var spacing = 50 # Spacing between sprites
@@ -8,7 +8,7 @@ var layout_mode = "horizontal"  # Options: "horizontal" or "vertical"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	MakeSeats(3)
+	MakeSeats(5)
 	pass
 
 
@@ -23,7 +23,11 @@ func MakeSeats(seatCount:int):
 		seatInstace.name="seat"
 		seatCount-=1
 	arrange_sprites()
+	UpdateCounterText(get_child_count()-1)
 		
+func UpdateCounterText(seatCount:int):
+	seat_count_text_label.text=str(seatCount)+" seats"
+	
 func arrange_sprites():
 	var total_width = 0
 	var total_height = 0
