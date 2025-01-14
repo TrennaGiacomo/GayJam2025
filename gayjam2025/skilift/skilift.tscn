@@ -1,15 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://n46rv3rp16p8"]
+[gd_scene load_steps=5 format=3 uid="uid://n46rv3rp16p8"]
 
 [ext_resource type="Texture2D" uid="uid://ccy2r3xl2xmgl" path="res://icon.svg" id="1_7h7ks"]
 [ext_resource type="Script" path="res://skilift/skilift.gd" id="1_gm70p"]
+[ext_resource type="Script" path="res://skilift/path_follow_2d.gd" id="2_hc7tc"]
+
+[sub_resource type="Curve2D" id="Curve2D_47tfh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 287.954, -352.149, 0, 0, 0, 0, 292.137, -111.063, 0, 0, 0, 0, 321.42, -1.73376, 0, 0, 0, 0, 451.098, 39.3815, 0, 0, 0, 0, 811.896, 41.2505)
+}
+point_count = 5
 
 [node name="skilift" type="Node2D"]
 position = Vector2(497, 255)
 script = ExtResource("1_gm70p")
-minTime = null
-maxTime = null
-minSize = null
-maxSize = null
+minTime = 1.0
+maxTime = 2.0
+minSize = 2
+maxSize = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(12.6541, 19.8554)
+scale = Vector2(0.956214, 1.07016)
+curve = SubResource("Curve2D_47tfh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(287.954, -352.149)
+rotation = 1.55345
+rotates = false
+loop = false
+script = ExtResource("2_hc7tc")
+speed = 0.2
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(-66.2961, -3.3015)
+rotation = -1.55255
+scale = Vector2(1.04579, 0.93444)
 texture = ExtResource("1_7h7ks")
