@@ -1,10 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://w81635vhhmj"]
+[gd_scene load_steps=6 format=3 uid="uid://w81635vhhmj"]
 
+[ext_resource type="Script" path="res://skilift/lift_fill_area.gd" id="1_gp27x"]
 [ext_resource type="PackedScene" uid="uid://n46rv3rp16p8" path="res://skilift/skilift.tscn" id="2_nm3s0"]
 [ext_resource type="PackedScene" uid="uid://y1jt16w2al1j" path="res://hud.tscn" id="3_8hwvo"]
 [ext_resource type="PackedScene" uid="uid://chfvnuldgslkt" path="res://characters/guyManager.tscn" id="4_meiug"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f74m5"]
+size = Vector2(237, 280)
+
 [node name="Game" type="Node2D"]
+
+[node name="LiftFillArea" type="Node2D" parent="."]
+script = ExtResource("1_gp27x")
+
+[node name="Area2D" type="Area2D" parent="LiftFillArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LiftFillArea/Area2D"]
+position = Vector2(174.5, 29)
+shape = SubResource("RectangleShape2D_f74m5")
 
 [node name="skilift" parent="." instance=ExtResource("2_nm3s0")]
 position = Vector2(-147, 6)
@@ -19,3 +32,5 @@ position = Vector2(-147, 6)
 position = Vector2(-452, 218)
 
 [node name="WalkTarget" type="Node2D" parent="GuyManager"]
+
+[connection signal="body_entered" from="LiftFillArea/Area2D" to="LiftFillArea" method="_on_area_2d_body_entered"]
