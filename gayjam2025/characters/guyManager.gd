@@ -1,4 +1,5 @@
 extends Node2D
+class_name guyManager;
 
 @export_file var guyPath: String
 
@@ -18,13 +19,16 @@ func _process(delta: float) -> void:
 
 func spawnGroup(size: int) -> int:
 	var groupId = groups.size();
+	var group = [];
 
 	for i in size:
-		spawn_guy(groupId);
+		group.append(spawn_guy(groupId));
+
+	groups[groupId] = group;
 
 	return groupId;
 
-func spawn_guy(groupId: int) -> void:
+func spawn_guy(groupId: int) -> guy:
 	if (not spawnPoint):
 		printerr("GuyManager: SpawnPoint not found")
 		return
@@ -33,5 +37,11 @@ func spawn_guy(groupId: int) -> void:
 	guyInstance.position = spawnPoint.position + Vector2(randf_range(-100, 100), randf_range(-100, 100))
 	guyInstance.targetPoint = walkTarget.position + Vector2(randf_range(-100, 100), randf_range(-100, 100))
 	guyInstance.groupId = groupId;
+	guyInstance.manager = self;
 
 	add_child(guyInstance)
+	return guyInstance;
+
+func startMovingGroup(groupId: int) -> void:
+	for guyInstance in groups[groupId]:
+		(guyInstance as guy).beingMoved = true;

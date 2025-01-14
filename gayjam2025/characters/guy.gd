@@ -20,6 +20,7 @@ var beingMoved: bool
 var mouseOffset: Vector2
 
 var groupId: int;
+var manager: guyManager;
 
 func _ready() -> void:
 	cam = $'/root/Game/Camera2D' as Camera2D
@@ -58,5 +59,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 				var mousePos = cam.get_local_mouse_position()
 				mouseOffset = position - mousePos
 				beingMoved = true
+				manager.startMovingGroup(groupId);
 			else:
 				beingMoved = false
