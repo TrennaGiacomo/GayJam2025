@@ -13,6 +13,7 @@ size = Vector2(64, 64)
 position = Vector2(32, 32)
 texture = SubResource("PlaceholderTexture2D_0llfh")
 script = ExtResource("1_q2jt0")
+walkSpeed = 150.0
 
 [node name="Area2D" type="Area2D" parent="."]
 

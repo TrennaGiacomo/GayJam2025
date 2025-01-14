@@ -35,9 +35,7 @@ func _process(delta: float) -> void:
 		beingMoved = false
 		
 	if (!beingMoved && isWalkingToTarget):
-		var direction = (targetPoint - position).normalized()
-		var movement = direction * walkSpeed * delta
-		position += movement
+		position = position.move_toward(targetPoint, walkSpeed*delta);
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
