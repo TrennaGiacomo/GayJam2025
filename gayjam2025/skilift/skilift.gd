@@ -15,29 +15,29 @@ var waiting: bool;
 var timeRemaining: float;
 
 func getNewSkilift():
-    currentSize = randi_range(minSize, maxSize);
-    timeRemaining = randf_range(minTime, maxTime);
+	currentSize = randi_range(minSize, maxSize);
+	timeRemaining = randf_range(minTime, maxTime);
 
-    waiting = true;
-    fillAmount = 0;
-    pass;
+	waiting = true;
+	fillAmount = 0;
+	pass;
 
 func fill(amount: int):
-    if(fillAmount + amount > currentSize):
-        return;
-    
-    fillAmount += amount;
-    if(fillAmount == currentSize):
-        # Do stuff when the lift is filled
-        pass;
+	if(fillAmount + amount > currentSize):
+		return;
+	
+	fillAmount += amount;
+	if(fillAmount == currentSize):
+		# Do stuff when the lift is filled
+		pass;
 
-    pass;
+	pass;
 
 func _process(delta):
-    if(waiting):
-        timeRemaining -= delta;
-        
-        if(timeRemaining < 0):
-            waiting = false;
-            #Do stuff when time runs out
-    pass
+	if(waiting):
+		timeRemaining -= delta;
+		
+		if(timeRemaining < 0):
+			waiting = false;
+			#Do stuff when time runs out
+	pass
