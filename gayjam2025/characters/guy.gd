@@ -8,7 +8,10 @@ var cam: Camera2D
 
 @export var walkSpeed: float = 100.0
 
+
 @export var isDraggable: bool = true
+@export var dragSpeed: float = 1.0;
+
 @export var isWalkingToTarget: bool = true
 
 var targetPoint: Vector2
@@ -29,7 +32,7 @@ func _process(delta: float) -> void:
 	if (beingMoved):
 		var mousePos = cam.get_local_mouse_position()
 		var offsetPos = mousePos + mouseOffset
-		position = offsetPos
+		position = lerp(position, offsetPos, dragSpeed * delta)
 		
 	if (!isDraggable):
 		beingMoved = false
@@ -37,6 +40,10 @@ func _process(delta: float) -> void:
 	if (!beingMoved && isWalkingToTarget):
 		position = position.move_toward(targetPoint, walkSpeed*delta);
 
+func _unhandled_input(event: InputEvent):
+	if(event is InputEventMouseButton):
+		if(event.is_released() && beingMoved):
+			beingMoved = false;
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if (not cam):
