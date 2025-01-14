@@ -8,7 +8,6 @@ var cam: Camera2D
 
 @export var walkSpeed: float = 100.0
 
-
 @export var isDraggable: bool = true
 @export var dragSpeed: float = 1.0;
 
@@ -22,6 +21,8 @@ var mouseOffset: Vector2
 var groupId: int;
 var manager: guyManager;
 
+var isInLift: bool
+
 func _ready() -> void:
 	cam = $'/root/Game/Camera2D' as Camera2D
 	if (not cam):
@@ -29,6 +30,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# Guys in lift are done processing
+	if (isInLift):
+		return
+	
 	if (not cam):
 		printerr("draggable._process: No camera!")
 		
@@ -62,3 +67,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 				manager.startMovingGroup(groupId);
 			else:
 				beingMoved = false
+				
+func onEnterLift() -> void:
+	isInLift = true
+	queue_free() # remove self from tree

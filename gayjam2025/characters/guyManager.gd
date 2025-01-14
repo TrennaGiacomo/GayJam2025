@@ -9,6 +9,8 @@ class_name guyManager;
 
 var groups = {};
 
+var idCounter: int
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawnGroup(3);
@@ -16,9 +18,16 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func removeGroup(group: Array) -> void:
+	groups.erase(group)
 
+func getGroupById(groupId: int) -> Array:
+	return groups[groupId]
+
+# Spawns group of size. Returns id of group
 func spawnGroup(size: int) -> int:
-	var groupId = groups.size();
+	var groupId = idCounter
 	var group = [];
 
 	for i in size:
@@ -26,6 +35,7 @@ func spawnGroup(size: int) -> int:
 
 	groups[groupId] = group;
 
+	idCounter + 1
 	return groupId;
 
 func spawn_guy(groupId: int) -> guy:
