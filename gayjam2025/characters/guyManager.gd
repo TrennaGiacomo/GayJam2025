@@ -1,9 +1,9 @@
 extends Node2D
 class_name guyManager;
 
-@export_file var guyPath: String
+@export_file var guyPaths: Array[String]
+var guyScenes = [];
 
-@onready var guyScene: PackedScene = load(guyPath) as PackedScene
 @onready var spawnPoint: Node2D = $SpawnPoint
 @onready var walkTarget: Node2D = $WalkTarget
 @onready var spawnTimer: Timer = $SpawnTimer
@@ -18,6 +18,10 @@ var idCounter: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawnTimer.timeout.connect(onSpawnTimerTimout)
+
+	for path in guyPaths:
+		guyScenes.append(load(path) as PackedScene)
+		
 	onSpawnTimerTimout();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,19 +39,22 @@ func spawnGroup(size: int) -> int:
 	var groupId = idCounter
 	var group = [];
 
+	var guyScene = guyScenes.pick_random();
+
 	for i in size:
-		group.append(spawn_guy(groupId));
+		group.append(spawn_guy(groupId, guyScene));
 
 	groups[groupId] = group;
 
 	idCounter += 1
 	return groupId;
 
-func spawn_guy(groupId: int) -> guy:
+func spawn_guy(groupId: int, guyScene: PackedScene) -> guy:
 	if (not spawnPoint):
 		printerr("GuyManager: SpawnPoint not found")
 		return
-		
+	
+
 	var guyInstance = guyScene.instantiate() as guy
 	guyInstance.position = spawnPoint.position + Vector2(randf_range(-100, 100), randf_range(-100, 100))
 	guyInstance.targetPoint = walkTarget.position + Vector2(randf_range(-100, 100), randf_range(-100, 100))

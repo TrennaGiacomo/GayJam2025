@@ -27,6 +27,7 @@ position = Vector2(-147, 6)
 [node name="HUD" parent="." instance=ExtResource("3_8hwvo")]
 
 [node name="GuyManager" parent="." instance=ExtResource("4_meiug")]
+guyPaths = Array[String](["res://characters/guyBlue.tscn", "res://characters/guyGreen.tscn", "res://characters/guyPurple.tscn", "res://characters/guyRed.tscn", "res://characters/guyYellow.tscn"])
 minSpawnTime = 1.0
 maxSpawnTime = 3.0
 

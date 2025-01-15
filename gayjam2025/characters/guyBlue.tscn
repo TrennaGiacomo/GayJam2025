@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://77nvr0u3unc0"]
+[gd_scene load_steps=5 format=3 uid="uid://bmqcahqlao7om"]
 
-[ext_resource type="Script" path="res://characters/guy.gd" id="1_q2jt0"]
-[ext_resource type="PackedScene" uid="uid://b68ncuaa36msd" path="res://Art/Animations/Skiperson/Skiperson_RED_AnimatedSprite2D.tscn" id="2_wgk7k"]
+[ext_resource type="Script" path="res://characters/guy.gd" id="1_rdxsc"]
+[ext_resource type="PackedScene" path="res://Art/Animations/Skiperson/Skiperson_BLUE_AnimatedSprite2D.tscn" id="2_m3hog"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypiaw"]
 size = Vector2(66.16, 96.89)
@@ -14,7 +14,7 @@ position = Vector2(32, 32)
 gravity_scale = 0.0
 can_sleep = false
 lock_rotation = true
-script = ExtResource("1_q2jt0")
+script = ExtResource("1_rdxsc")
 walkSpeed = 150.0
 dragSpeed = 5.0
 
@@ -34,16 +34,14 @@ shape = SubResource("RectangleShape2D_ypiaw")
 position = Vector2(19.92, 34.5)
 shape = SubResource("RectangleShape2D_adbqn")
 
-[node name="AnimatedSprite2D" parent="." instance=ExtResource("2_wgk7k")]
-y_sort_enabled = true
-position = Vector2(20.75, 22.75)
-scale = Vector2(0.2125, 0.2125)
-animation = &"idle_happy"
-frame_progress = 0.499968
-
 [node name="MoodTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("2_m3hog")]
+position = Vector2(21, 23)
+scale = Vector2(0.215385, 0.215385)
+animation = &"idle_happy"
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="timeout" from="MoodTimer" to="." method="_on_mood_timer_timeout"]
