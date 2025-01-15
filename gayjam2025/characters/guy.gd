@@ -5,6 +5,7 @@ class_name guy
 var cam: Camera2D
 @onready var area = $'./Area2D' as Area2D
 @onready var col = $'./Area2D/CollisionShape2D' as CollisionShape2D
+@onready var anim = $AnimatedSprite2D as AnimatedSprite2D
 
 @export var walkSpeed: float = 100.0
 
@@ -25,11 +26,14 @@ var isInLift: bool
 
 func _ready() -> void:
 	cam = $'/root/Game/Camera2D' as Camera2D
+	anim.frame = randi_range(0, anim.sprite_frames.get_frame_count(anim.animation))
+	anim.play();
 	if (not cam):
 		printerr("draggable.gd: Didn't find camera!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	anim.z_index = position.y;
 	# Guys in lift are done processing
 	if (isInLift):
 		return

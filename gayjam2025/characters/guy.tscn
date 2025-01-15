@@ -1,14 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://77nvr0u3unc0"]
 
 [ext_resource type="Script" path="res://characters/guy.gd" id="1_q2jt0"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ygeed"]
+[ext_resource type="PackedScene" uid="uid://b68ncuaa36msd" path="res://Art/Animations/Skiperson/Skiperson_AnimatedSprite2D.tscn" id="2_wgk7k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypiaw"]
-size = Vector2(64, 64)
+size = Vector2(66.16, 96.89)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_adbqn"]
-size = Vector2(32, 32)
+size = Vector2(36.16, 53)
 
 [node name="Guy" type="RigidBody2D"]
 position = Vector2(32, 32)
@@ -19,11 +18,8 @@ script = ExtResource("1_q2jt0")
 walkSpeed = 150.0
 dragSpeed = 5.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(64, 64)
-texture = SubResource("PlaceholderTexture2D_ygeed")
-
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(19.92, 22.555)
 gravity_space_override = 3
 gravity_point = true
 gravity_point_unit_distance = 1024.0
@@ -35,6 +31,14 @@ gravity = -4096.0
 shape = SubResource("RectangleShape2D_ypiaw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(19.92, 34.5)
 shape = SubResource("RectangleShape2D_adbqn")
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("2_wgk7k")]
+y_sort_enabled = true
+position = Vector2(20.75, 22.75)
+scale = Vector2(0.2125, 0.2125)
+animation = &"idle_happy"
+frame_progress = 0.85403
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

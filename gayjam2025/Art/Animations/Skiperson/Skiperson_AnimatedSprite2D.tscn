@@ -1,9 +1,9 @@
 [gd_scene load_steps=156 format=3 uid="uid://b68ncuaa36msd"]
 
-[ext_resource type="Texture2D" uid="uid://bn1syegjc2h1f" path="res://Art/Animations/Skiperson_angry_waving.png" id="1_o567b"]
-[ext_resource type="Texture2D" uid="uid://ejcewhx0f7fl" path="res://Art/Animations/Skiperson_idle_angry.png" id="2_bdj0c"]
-[ext_resource type="Texture2D" uid="uid://c875c4ghu38h5" path="res://Art/Animations/Skiperson_idle_happy.png" id="3_oq276"]
-[ext_resource type="Texture2D" uid="uid://2h40nyktv0ld" path="res://Art/Animations/Skiperson_idle_neutral.png" id="4_jmuk8"]
+[ext_resource type="Texture2D" uid="uid://bn1syegjc2h1f" path="res://Art/Animations/Skiperson/Skiperson_angry_waving.png" id="1_o567b"]
+[ext_resource type="Texture2D" uid="uid://ejcewhx0f7fl" path="res://Art/Animations/Skiperson/Skiperson_idle_angry.png" id="2_bdj0c"]
+[ext_resource type="Texture2D" uid="uid://c875c4ghu38h5" path="res://Art/Animations/Skiperson/Skiperson_idle_happy.png" id="3_oq276"]
+[ext_resource type="Texture2D" uid="uid://2h40nyktv0ld" path="res://Art/Animations/Skiperson/Skiperson_idle_neutral.png" id="4_jmuk8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjud7"]
 atlas = ExtResource("1_o567b")
@@ -1079,7 +1079,6 @@ animations = [{
 }]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
-position = Vector2(-278, -10)
+position = Vector2(465, 342)
 sprite_frames = SubResource("SpriteFrames_f7knb")
-animation = &"angry_waving"
-frame_progress = 0.438868
+animation = &"idle_angry"
