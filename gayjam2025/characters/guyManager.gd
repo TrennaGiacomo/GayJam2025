@@ -21,7 +21,7 @@ func _ready() -> void:
 
 	for path in guyPaths:
 		guyScenes.append(load(path) as PackedScene)
-		
+
 	onSpawnTimerTimout();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -66,7 +66,7 @@ func spawn_guy(groupId: int, guyScene: PackedScene) -> guy:
 
 func startMovingGroup(groupId: int) -> void:
 	for guyInstance in groups[groupId]:
-		(guyInstance as guy).beingMoved = true;
+		(guyInstance as guy).startDragging();
 
 func onSpawnTimerTimout():
 	spawnGroup(randi_range(2, 5));

@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://n46rv3rp16p8"]
+[gd_scene load_steps=9 format=3 uid="uid://n46rv3rp16p8"]
 
-[ext_resource type="Texture2D" uid="uid://ccy2r3xl2xmgl" path="res://icon.svg" id="1_7h7ks"]
 [ext_resource type="Script" path="res://skilift/skilift.gd" id="1_gm70p"]
 [ext_resource type="Script" path="res://skilift/path_follow_2d.gd" id="2_hc7tc"]
+[ext_resource type="Texture2D" uid="uid://kcv86lne24cc" path="res://Art/Sprites/Lifts/2_lift_closed.png" id="3_bn3bs"]
 [ext_resource type="PackedScene" uid="uid://boox2t4owlwjq" path="res://skilift/seat_manager.tscn" id="4_ppkpv"]
+[ext_resource type="Texture2D" uid="uid://qnmqclirft3i" path="res://Art/Sprites/Lifts/3_lift_closed.png" id="5_kclqx"]
+[ext_resource type="Texture2D" uid="uid://dt54lc6lht7ku" path="res://Art/Sprites/Lifts/4_lift_closed.png" id="6_7umbd"]
+[ext_resource type="Texture2D" uid="uid://cyjan7pvsbx1w" path="res://Art/Sprites/Lifts/5_lift_closed.png" id="7_chk6u"]
 
 [sub_resource type="Curve2D" id="Curve2D_47tfh"]
 _data = {
@@ -35,8 +38,9 @@ speed = 0.2
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
 position = Vector2(-66.2961, -3.3015)
 rotation = -1.55255
-scale = Vector2(1.04579, 0.93444)
-texture = ExtResource("1_7h7ks")
+scale = Vector2(0.424271, 0.379097)
+texture = ExtResource("3_bn3bs")
 
 [node name="SeatManager" parent="Path2D/PathFollow2D/Sprite2D" instance=ExtResource("4_ppkpv")]
 seatpath = "res://skilift/seat.tscn"
+seatOptions = Array[Texture2D]([ExtResource("3_bn3bs"), ExtResource("5_kclqx"), ExtResource("6_7umbd"), ExtResource("7_chk6u")])

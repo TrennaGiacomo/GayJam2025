@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://77nvr0u3unc0"]
 
 [ext_resource type="Script" path="res://characters/guy.gd" id="1_q2jt0"]
-[ext_resource type="PackedScene" path="res://Art/Animations/Skiperson/Skiperson_RED_AnimatedSprite2D.tscn" id="2_wgk7k"]
+[ext_resource type="PackedScene" uid="uid://b68ncuaa36msd" path="res://Art/Animations/Skiperson/Skiperson_RED_AnimatedSprite2D.tscn" id="2_wgk7k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypiaw"]
 size = Vector2(66.16, 96.89)
@@ -39,7 +39,7 @@ y_sort_enabled = true
 position = Vector2(20.75, 22.75)
 scale = Vector2(0.2125, 0.2125)
 animation = &"idle_happy"
-frame_progress = 0.499968
+frame_progress = 0.869966
 
 [node name="MoodTimer" type="Timer" parent="."]
 wait_time = 5.0
