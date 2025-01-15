@@ -4,3 +4,7 @@
 
 [node name="GuyManager" type="Node2D"]
 script = ExtResource("1_ndpu0")
+pickUpSoundPath = "res://audio/pick_up.wav"
+dropSoundPath = "res://audio/drop.wav"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

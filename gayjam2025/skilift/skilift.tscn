@@ -21,6 +21,9 @@ minTime = 1.0
 maxTime = 2.0
 minSize = 2
 maxSize = 5
+placeSoundPath = "res://audio/place_in_lift.wav"
+arriveSoundPath = "res://audio/lift_arrive.wav"
+leaveSoundPath = "res://audio/lift_leave.wav"
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(32.4397, -7.22437)
@@ -48,3 +51,5 @@ position = Vector2(-79.2236, 257.413)
 seatpath = "res://skilift/seat.tscn"
 seatOptions = Array[Texture2D]([ExtResource("3_bn3bs"), ExtResource("5_kclqx"), ExtResource("6_7umbd"), ExtResource("7_chk6u"), null])
 seatSpacings = Array[float]([0.0, 20.0, 36.0, 55.0])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
