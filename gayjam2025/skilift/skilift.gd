@@ -1,11 +1,6 @@
 extends Node2D
-class_name skilift;
 
-@export var minTime: float;
-@export var maxTime: float;
 
-@export var minSize: int;
-@export var maxSize: int;
 
 @onready var seatManager = $Path2D/PathFollow2D/Sprite2D/SeatManager as SeatManager
 
@@ -20,9 +15,7 @@ var leaveSound: AudioStream
 var currentSize: int;
 var fillAmount: int;
 
-var waiting: bool;
 
-var timeRemaining: float;
 
 func _ready():
 	getNewSkilift();
@@ -45,12 +38,17 @@ func startWaiting():
 
 # Add group of guys to lift
 func addGroup(group: Array) -> void:
-	if (not group || group.size() < 1):
 		printerr("Invalid group passed in addGroup")
 		return
-		
-	for i in group.size():
-		if (group[i] == null || group[i] is not guy):
+
+	# Ensuring the group fits within the remaining capacity I hope :D
+	if fillAmount + group.size() > currentSize:
+		printerr("Group cannot fit in the ski lift! Remaining space:", currentSize - fillAmount)
+		return
+
+	# Adding each guy in the group to the lift
+	for i in range(group.size()):
+		if group[i] == null or group[i] is not guy:
 			continue
 		
 		var member = group[i] as guy
@@ -69,19 +67,24 @@ func playSound(sound: AudioStream) -> void:
 	audioSrc.stream = sound
 	audioSrc.play()
 
-func fill(amount: int):
-	if(fillAmount + amount > currentSize):
-		return;
-	
-	fillAmount += amount;
+	fill(group.size())
+
+func fill(amount: int) -> void:
+	if fillAmount + amount > currentSize:
+		return
+
+	fillAmount += amount
 	var spaceLeft = currentSize - fillAmount
-	
-	if(spaceLeft == 0):
+
+	if spaceLeft == 0:
 		# Do stuff when the lift is filled
 		print("Lift filled")
 		pass;
 
 	pass;
+func _process(delta: float) -> void:
+	if waiting:
+		timeRemaining -= delta
 
 func _process(delta):
 	if(waiting):
