@@ -1,6 +1,11 @@
 extends Node2D
+class_name skilift
 
+@export var minTime: float
+@export var maxTime: float
 
+@export var minSize: int
+@export var maxSize: int
 
 @onready var seatManager = $Path2D/PathFollow2D/Sprite2D/SeatManager as SeatManager
 
@@ -15,7 +20,11 @@ var leaveSound: AudioStream
 var currentSize: int;
 var fillAmount: int;
 
+var waiting: bool
+var timeRemaining: float
 
+func _ready() -> void:
+	getNewSkilift()
 
 func _ready():
 	getNewSkilift();
@@ -38,6 +47,7 @@ func startWaiting():
 
 # Add group of guys to lift
 func addGroup(group: Array) -> void:
+	if not group or group.size() < 1:
 		printerr("Invalid group passed in addGroup")
 		return
 
@@ -50,7 +60,7 @@ func addGroup(group: Array) -> void:
 	for i in range(group.size()):
 		if group[i] == null or group[i] is not guy:
 			continue
-		
+
 		var member = group[i] as guy
 		seatManager.setSeat(fillAmount + i, member.backTexture)
 		member.onEnterLift()
@@ -79,9 +89,7 @@ func fill(amount: int) -> void:
 	if spaceLeft == 0:
 		# Do stuff when the lift is filled
 		print("Lift filled")
-		pass;
 
-	pass;
 func _process(delta: float) -> void:
 	if waiting:
 		timeRemaining -= delta
