@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bn1syegjc2h1f"
-path="res://.godot/imported/Skiperson_angry_waving.png-8d96cf762806eda14fdeca7aa595dd24.ctex"
+path="res://.godot/imported/Skiperson_angry_waving.png-b57de4819b41d9c40bc722958aa839e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Animations/Skiperson_angry_waving.png"
-dest_files=["res://.godot/imported/Skiperson_angry_waving.png-8d96cf762806eda14fdeca7aa595dd24.ctex"]
+source_file="res://Art/Animations/Skiperson/Skiperson_angry_waving.png"
+dest_files=["res://.godot/imported/Skiperson_angry_waving.png-b57de4819b41d9c40bc722958aa839e8.ctex"]
 
 [params]
 

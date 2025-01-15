@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c875c4ghu38h5"
-path="res://.godot/imported/Skiperson_idle_happy.png-48f7e4ebced5a12a3a2b4c50906ffedd.ctex"
+uid="uid://ejcewhx0f7fl"
+path="res://.godot/imported/Skiperson_idle_angry.png-6fde97a0fe48047d8c0c1ef6f6bbcfc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Animations/Skiperson_idle_happy.png"
-dest_files=["res://.godot/imported/Skiperson_idle_happy.png-48f7e4ebced5a12a3a2b4c50906ffedd.ctex"]
+source_file="res://Art/Animations/Skiperson/Skiperson_idle_angry.png"
+dest_files=["res://.godot/imported/Skiperson_idle_angry.png-6fde97a0fe48047d8c0c1ef6f6bbcfc0.ctex"]
 
 [params]
 
