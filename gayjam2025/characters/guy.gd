@@ -75,3 +75,19 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 func onEnterLift() -> void:
 	isInLift = true
 	queue_free() # remove self from tree
+
+
+func _on_mood_timer_timeout():
+	if(anim.animation == "idle_happy"):
+		anim.animation = "idle_neutral"
+		anim.frame = randi_range(0, anim.sprite_frames.get_frame_count(anim.animation))
+		anim.play();
+	elif (anim.animation == "idle_neutral"):
+		anim.animation = "idle_angry"
+		anim.frame = randi_range(0, anim.sprite_frames.get_frame_count(anim.animation))
+		anim.play();
+	elif (anim.animation == "idle_angry"):
+		anim.animation = "angry_waving"
+		anim.frame = randi_range(0, anim.sprite_frames.get_frame_count(anim.animation))
+		anim.play();
+	pass # Replace with function body.
