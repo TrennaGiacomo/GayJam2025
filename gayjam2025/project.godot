@@ -20,3 +20,7 @@ config/icon="res://icon.svg"
 window/size/mode=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.954722, 0.966542, 0.97914, 1)
