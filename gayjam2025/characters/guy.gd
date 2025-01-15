@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	if (beingMoved):
 		var mousePos = cam.get_local_mouse_position()
 		var offsetPos = mousePos + mouseOffset
-		move_and_collide(lerp(position, offsetPos, dragSpeed * delta) - position)
+		position = lerp(position, offsetPos, dragSpeed * delta)
 		
 	if (!isDraggable):
 		beingMoved = false

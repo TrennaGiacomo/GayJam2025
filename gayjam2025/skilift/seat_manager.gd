@@ -22,6 +22,8 @@ func _process(delta: float) -> void:
 	pass
 	
 func removeSeat() -> void:
+	if(seats.size() <= 0):
+		return;
 	var lastIndex = seats.size() - 1
 	var last = seats[lastIndex]
 	remove_child(last)

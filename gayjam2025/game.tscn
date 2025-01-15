@@ -27,10 +27,15 @@ position = Vector2(-147, 6)
 [node name="HUD" parent="." instance=ExtResource("3_8hwvo")]
 
 [node name="GuyManager" parent="." instance=ExtResource("4_meiug")]
+minSpawnTime = 1.0
+maxSpawnTime = 3.0
 
 [node name="SpawnPoint" type="Node2D" parent="GuyManager"]
-position = Vector2(-452, 218)
+position = Vector2(-424, 273)
 
 [node name="WalkTarget" type="Node2D" parent="GuyManager"]
+
+[node name="SpawnTimer" type="Timer" parent="GuyManager"]
+one_shot = true
 
 [connection signal="body_entered" from="LiftFillArea/Area2D" to="LiftFillArea" method="_on_area_2d_body_entered"]

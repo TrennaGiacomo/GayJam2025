@@ -31,7 +31,7 @@ func addGroup(group: Array) -> void:
 		return
 		
 	for i in group:
-		if (i is not guy):
+		if (i == null || i is not guy):
 			continue
 		
 		var member = i as guy

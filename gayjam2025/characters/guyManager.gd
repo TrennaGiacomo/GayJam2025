@@ -6,6 +6,10 @@ class_name guyManager;
 @onready var guyScene: PackedScene = load(guyPath) as PackedScene
 @onready var spawnPoint: Node2D = $SpawnPoint
 @onready var walkTarget: Node2D = $WalkTarget
+@onready var spawnTimer: Timer = $SpawnTimer
+
+@export var minSpawnTime: float;
+@export var maxSpawnTime: float;
 
 var groups = {};
 
@@ -13,7 +17,8 @@ var idCounter: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	spawnGroup(3);
+	spawnTimer.timeout.connect(onSpawnTimerTimout)
+	onSpawnTimerTimout();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -35,7 +40,7 @@ func spawnGroup(size: int) -> int:
 
 	groups[groupId] = group;
 
-	idCounter + 1
+	idCounter += 1
 	return groupId;
 
 func spawn_guy(groupId: int) -> guy:
@@ -55,3 +60,12 @@ func spawn_guy(groupId: int) -> guy:
 func startMovingGroup(groupId: int) -> void:
 	for guyInstance in groups[groupId]:
 		(guyInstance as guy).beingMoved = true;
+
+func onSpawnTimerTimout():
+	spawnGroup(randi_range(2, 5));
+
+	spawnPoint.position = Vector2(randf_range(-400, -150), randf_range(-70, 250))
+	walkTarget.position = Vector2(randf_range(-400, -150), randf_range(-70, 250))
+
+	spawnTimer.wait_time = randf_range(minSpawnTime, maxSpawnTime);
+	spawnTimer.start();
