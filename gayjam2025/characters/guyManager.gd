@@ -8,6 +8,12 @@ var guyScenes = [];
 @onready var walkTarget: Node2D = $WalkTarget
 @onready var spawnTimer: Timer = $SpawnTimer
 
+@onready var audioSrc: AudioStreamPlayer = $AudioStreamPlayer
+@export_file var pickUpSoundPath: String
+@export_file var dropSoundPath: String
+var pickUpSound: AudioStream
+var dropSound: AudioStream
+
 @export var minSpawnTime: float;
 @export var maxSpawnTime: float;
 
@@ -23,6 +29,9 @@ func _ready() -> void:
 		guyScenes.append(load(path) as PackedScene)
 
 	onSpawnTimerTimout();
+	
+	pickUpSound = load(pickUpSoundPath) as AudioStream
+	dropSound = load(dropSoundPath) as AudioStream
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -53,7 +62,6 @@ func spawn_guy(groupId: int, guyScene: PackedScene) -> guy:
 	if (not spawnPoint):
 		printerr("GuyManager: SpawnPoint not found")
 		return
-	
 
 	var guyInstance = guyScene.instantiate() as guy
 	guyInstance.position = spawnPoint.position + Vector2(randf_range(-100, 100), randf_range(-100, 100))
@@ -67,6 +75,22 @@ func spawn_guy(groupId: int, guyScene: PackedScene) -> guy:
 func startMovingGroup(groupId: int) -> void:
 	for guyInstance in groups[groupId]:
 		(guyInstance as guy).startDragging();
+		
+	playSound(pickUpSound)
+		
+func stopMovingGroup(groupId: int) -> void:
+	for guyInstance in groups[groupId]:
+		(guyInstance as guy).stopDragging()
+	
+	playSound(dropSound)
+	
+func playSound(sound: AudioStream) -> void:
+	if (not sound):
+		printerr("guyManager.playSound: InvalidSound")
+		return
+		
+	audioSrc.stream = sound;
+	audioSrc.play()
 
 func onSpawnTimerTimout():
 	spawnGroup(randi_range(2, 5));

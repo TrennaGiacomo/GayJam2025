@@ -60,7 +60,7 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent):
 	if(event is InputEventMouseButton):
 		if(event.is_released() && beingMoved):
-			stopDragging()
+			manager.stopMovingGroup(groupId)
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if (not cam):
@@ -72,10 +72,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			if (event.is_pressed() && isDraggable && !beingMoved):
 				var mousePos = cam.get_local_mouse_position()
 				mouseOffset = position - mousePos
-				startDragging()
 				manager.startMovingGroup(groupId);
-			else:
-				stopDragging()
 
 func startDragging() -> void:
 	beingMoved = true;
@@ -87,11 +84,9 @@ func stopDragging() -> void:
 	beingMoved = false;
 	anim.animation = lastAnim;
 
-
 func onEnterLift() -> void:
 	isInLift = true
 	queue_free() # remove self from tree
-
 
 func _on_mood_timer_timeout():
 	if(beingMoved):
