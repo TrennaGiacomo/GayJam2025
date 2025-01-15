@@ -12,8 +12,9 @@ func _process(delta):
 	
 	if progress_ratio >  0.5 && !stopped_already:
 		stopped_already = true
-		skilift.getNewSkilift()
+		skilift.startWaiting()
 	
-	if progress_ratio > 1.0:
+	if progress_ratio >= 1.0:
 		stopped_already = false
 		progress_ratio = 0.0 
+		skilift.getNewSkilift()

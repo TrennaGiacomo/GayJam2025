@@ -3,17 +3,18 @@ extends Node2D
 class_name SeatManager
 
 @export_file var seatpath
-@onready var seat_count_text_label: Label = $SeatCountTextLabel
 @onready var seatScene=load(seatpath) as PackedScene
+@onready var sprite: Sprite2D = $"../.";
 
 var spacing = 50 # Spacing between sprites
 var layout_mode = "horizontal"  # Options: "horizontal" or "vertical"
 
 var seats: Array = []
 
+@export var seatOptions: Array[Texture2D]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	MakeSeats(5)
 	pass
 
 
@@ -28,10 +29,15 @@ func removeSeat() -> void:
 	var last = seats[lastIndex]
 	remove_child(last)
 	seats.remove_at(lastIndex)
-	UpdateCounterText(seats.size())
 	arrange_sprites()
 
 func MakeSeats(seatCount:int):
+	sprite.texture = seatOptions[seatCount - 2];
+
+	for oldSeat in seats:
+		remove_child(oldSeat);
+	seats.clear();
+
 	while seatCount >0:
 		var seatInstace = seatScene.instantiate() as seat
 		add_child(seatInstace)
@@ -40,10 +46,6 @@ func MakeSeats(seatCount:int):
 		seats.append(seatInstace)
 		
 	arrange_sprites()
-	UpdateCounterText(seats.size())
-		
-func UpdateCounterText(seatCount:int):
-	seat_count_text_label.text=str(seatCount)+" seats"
 	
 func arrange_sprites():
 	var total_width = 0

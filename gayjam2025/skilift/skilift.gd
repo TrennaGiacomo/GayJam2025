@@ -16,13 +16,20 @@ var waiting: bool;
 
 var timeRemaining: float;
 
+func _ready():
+	getNewSkilift();
+
 func getNewSkilift():
 	currentSize = randi_range(minSize, maxSize);
-	timeRemaining = randf_range(minTime, maxTime);
-
-	waiting = true;
+	
 	fillAmount = 0;
+
+	seatManager.MakeSeats(currentSize);
 	pass;
+
+func startWaiting():
+	timeRemaining = randf_range(minTime, maxTime);
+	waiting = true;
 
 # Add group of guys to lift
 func addGroup(group: Array) -> void:

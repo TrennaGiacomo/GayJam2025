@@ -28,6 +28,7 @@ var lastAnim: String;
 
 func _ready() -> void:
 	cam = $'/root/Game/Camera2D' as Camera2D
+	anim.animation = "idle_happy"
 	anim.frame = randi_range(0, anim.sprite_frames.get_frame_count(anim.animation))
 	anim.play();
 	if (not cam):
