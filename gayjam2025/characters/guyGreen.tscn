@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvs6jlkp5yxuj"]
+[gd_scene load_steps=6 format=3 uid="uid://dvs6jlkp5yxuj"]
 
 [ext_resource type="Script" path="res://characters/guy.gd" id="1_o3rha"]
-[ext_resource type="PackedScene" path="res://Art/Animations/Skiperson/Skiperson_GREEN_AnimatedSprite2D.tscn" id="2_ekk1p"]
+[ext_resource type="Texture2D" uid="uid://dy5jsi27aoowf" path="res://Art/Sprites/Skiperson BACK/Skiperson_back_green.png" id="2_d1pca"]
+[ext_resource type="PackedScene" uid="uid://ckcirujjm2bcb" path="res://Art/Animations/Skiperson/Skiperson_GREEN_AnimatedSprite2D.tscn" id="2_ekk1p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypiaw"]
 size = Vector2(66.16, 96.89)
@@ -17,6 +18,7 @@ lock_rotation = true
 script = ExtResource("1_o3rha")
 walkSpeed = 150.0
 dragSpeed = 5.0
+backTexture = ExtResource("2_d1pca")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(19.92, 22.555)
@@ -42,6 +44,7 @@ autostart = true
 position = Vector2(20.5, 22.5)
 scale = Vector2(0.213462, 0.213462)
 animation = &"idle_happy"
+frame = 0
 frame_progress = 0.0
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

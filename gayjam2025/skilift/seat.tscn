@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" path="res://skilift/seat.gd" id="1_06yod"]
 
-[sub_resource type="ImageTexture" id="ImageTexture_4uuv8"]
+[sub_resource type="ImageTexture" id="ImageTexture_0u6ew"]
 
 [node name="Seat" type="Sprite2D"]
+z_index = -1
+z_as_relative = false
 scale = Vector2(40, 40)
-texture = SubResource("ImageTexture_4uuv8")
+texture = SubResource("ImageTexture_0u6ew")
 script = ExtResource("1_06yod")

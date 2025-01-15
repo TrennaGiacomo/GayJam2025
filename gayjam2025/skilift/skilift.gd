@@ -37,13 +37,13 @@ func addGroup(group: Array) -> void:
 		printerr("Invalid group passed in addGroup")
 		return
 		
-	for i in group:
-		if (i == null || i is not guy):
+	for i in group.size():
+		if (group[i] == null || group[i] is not guy):
 			continue
 		
-		var member = i as guy
+		var member = group[i] as guy
+		seatManager.setSeat(fillAmount + i, member.backTexture)
 		member.onEnterLift()
-		seatManager.removeSeat()
 		
 	fill(group.size())
 	pass

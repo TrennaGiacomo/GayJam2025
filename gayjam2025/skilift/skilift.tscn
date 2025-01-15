@@ -36,11 +36,15 @@ script = ExtResource("2_hc7tc")
 speed = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+z_index = 4096
+z_as_relative = false
 position = Vector2(-66.2961, -3.3015)
 rotation = -1.55255
 scale = Vector2(0.424271, 0.379097)
 texture = ExtResource("3_bn3bs")
 
 [node name="SeatManager" parent="Path2D/PathFollow2D/Sprite2D" instance=ExtResource("4_ppkpv")]
+position = Vector2(-79.2236, 257.413)
 seatpath = "res://skilift/seat.tscn"
-seatOptions = Array[Texture2D]([ExtResource("3_bn3bs"), ExtResource("5_kclqx"), ExtResource("6_7umbd"), ExtResource("7_chk6u")])
+seatOptions = Array[Texture2D]([ExtResource("3_bn3bs"), ExtResource("5_kclqx"), ExtResource("6_7umbd"), ExtResource("7_chk6u"), null])
+seatSpacings = Array[float]([0.0, 20.0, 36.0, 55.0])

@@ -14,6 +14,8 @@ var cam: Camera2D
 
 @export var isWalkingToTarget: bool = true
 
+@export var backTexture: Texture2D;
+
 var targetPoint: Vector2
 
 var beingMoved: bool
@@ -27,7 +29,7 @@ var isInLift: bool
 var lastAnim: String;
 
 func _ready() -> void:
-	cam = $'/root/Game/Camera2D' as Camera2D
+	cam = $'/root/Game/Camera2D' as Camera2D 
 	anim.animation = "idle_happy"
 	anim.frame = randi_range(0, anim.sprite_frames.get_frame_count(anim.animation))
 	anim.play();
