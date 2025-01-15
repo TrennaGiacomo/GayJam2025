@@ -24,6 +24,8 @@ var manager: guyManager;
 
 var isInLift: bool
 
+var lastAnim: String;
+
 func _ready() -> void:
 	cam = $'/root/Game/Camera2D' as Camera2D
 	anim.frame = randi_range(0, anim.sprite_frames.get_frame_count(anim.animation))
@@ -55,7 +57,7 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent):
 	if(event is InputEventMouseButton):
 		if(event.is_released() && beingMoved):
-			beingMoved = false;
+			stopDragging()
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if (not cam):
@@ -67,17 +69,31 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			if (event.is_pressed() && isDraggable && !beingMoved):
 				var mousePos = cam.get_local_mouse_position()
 				mouseOffset = position - mousePos
-				beingMoved = true
+				startDragging()
 				manager.startMovingGroup(groupId);
 			else:
-				beingMoved = false
-				
+				stopDragging()
+
+func startDragging() -> void:
+	beingMoved = true;
+	if(anim.animation != "dangling"):
+		lastAnim = anim.animation;
+	anim.animation = "dangling";
+
+func stopDragging() -> void:
+	beingMoved = false;
+	anim.animation = lastAnim;
+
+
 func onEnterLift() -> void:
 	isInLift = true
 	queue_free() # remove self from tree
 
 
 func _on_mood_timer_timeout():
+	if(beingMoved):
+		return;
+
 	if(anim.animation == "idle_happy"):
 		anim.animation = "idle_neutral"
 		anim.frame = randi_range(0, anim.sprite_frames.get_frame_count(anim.animation))
