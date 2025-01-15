@@ -23,9 +23,6 @@ var fillAmount: int;
 var waiting: bool
 var timeRemaining: float
 
-func _ready() -> void:
-	getNewSkilift()
-
 func _ready():
 	getNewSkilift();
 	placeSound = load(placeSoundPath) as AudioStream
@@ -77,7 +74,6 @@ func playSound(sound: AudioStream) -> void:
 	audioSrc.stream = sound
 	audioSrc.play()
 
-	fill(group.size())
 
 func fill(amount: int) -> void:
 	if fillAmount + amount > currentSize:
@@ -89,10 +85,6 @@ func fill(amount: int) -> void:
 	if spaceLeft == 0:
 		# Do stuff when the lift is filled
 		print("Lift filled")
-
-func _process(delta: float) -> void:
-	if waiting:
-		timeRemaining -= delta
 
 func _process(delta):
 	if(waiting):
