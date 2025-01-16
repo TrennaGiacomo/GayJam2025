@@ -1,9 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://dckfrmx8kq350"]
+[gd_scene load_steps=15 format=3 uid="uid://dckfrmx8kq350"]
 
 [ext_resource type="FontFile" uid="uid://cf6ex1qvt6uj2" path="res://GamjaFlower-Regular.ttf" id="1_ql6na"]
 [ext_resource type="Script" path="res://mainmenu/main_menu.gd" id="1_vsi6x"]
-[ext_resource type="Texture2D" uid="uid://ccy2r3xl2xmgl" path="res://icon.svg" id="2_wcc7f"]
-[ext_resource type="Script" path="res://mainmenu/swayAnimator.gd" id="3_3gbfh"]
+[ext_resource type="Texture2D" uid="uid://iu87ps5abrd0" path="res://Art/Sprites/Hissipoika/Cabin.png" id="2_4naox"]
+[ext_resource type="Texture2D" uid="uid://booo2xglgd3lj" path="res://Art/Sprites/Hissipoika/HissipoikaNeutral.png" id="2_eiswi"]
+[ext_resource type="Texture2D" uid="uid://dc4n27ic7gjta" path="res://Art/Sprites/Hissipoika/Backdrop.png" id="2_mf3hm"]
+[ext_resource type="Texture2D" uid="uid://cevq85sq5prt2" path="res://Art/Sprites/Hissipoika/HissipoikaHappy.png" id="3_dsxc7"]
+[ext_resource type="Texture2D" uid="uid://dfuum36m243c6" path="res://Art/Sprites/Hissipoika/HissipoikaSad.png" id="4_na20j"]
+[ext_resource type="Texture2D" uid="uid://xs6enmucxwmp" path="res://Art/Sprites/Hissipoika/HissipoikaMug.png" id="7_i1q7w"]
+[ext_resource type="Texture2D" uid="uid://c65xhxuen1wfh" path="res://Art/Sprites/Signs/Button1.png" id="9_vo50r"]
+[ext_resource type="Texture2D" uid="uid://bnh0dg2catwvq" path="res://Art/Sprites/Signs/Button2.png" id="10_wy0ql"]
+[ext_resource type="Texture2D" uid="uid://bhp2ux08ykvus" path="res://Art/Sprites/Signs/Button3.png" id="11_vypd7"]
 
 [sub_resource type="Gradient" id="Gradient_1mewx"]
 colors = PackedColorArray(0.286275, 0.654902, 1, 1, 0.284563, 0.653099, 0.999993, 1)
@@ -30,56 +37,73 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -57.0
-offset_top = -56.0
-offset_right = 112.0
-offset_bottom = 120.0
+offset_left = -28.0
+offset_top = -17.0
+offset_right = 141.0
+offset_bottom = 159.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_lks1g")
+
+[node name="Backdrop" type="Sprite2D" parent="."]
+position = Vector2(646, 579)
+scale = Vector2(1.39815, 1.39815)
+texture = ExtResource("2_mf3hm")
+
+[node name="HissipoikaNeutral" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(585, 403)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_eiswi")
+
+[node name="HissipoikaHappy" type="Sprite2D" parent="."]
+position = Vector2(585, 403)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_dsxc7")
+
+[node name="HissipoikaSad" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(585, 403)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_na20j")
+
+[node name="Cabin" type="Sprite2D" parent="."]
+position = Vector2(662, 499)
+scale = Vector2(0.606445, 0.606445)
+texture = ExtResource("2_4naox")
+
+[node name="HissipoikaMug" type="Sprite2D" parent="."]
+position = Vector2(706, 380)
+scale = Vector2(0.0214844, 0.0214844)
+texture = ExtResource("7_i1q7w")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 45.0
-offset_top = -155.0
-offset_right = 414.0
-offset_bottom = -72.0
+offset_left = 422.0
+offset_top = -260.0
+offset_right = 791.0
+offset_bottom = -177.0
 grow_vertical = 2
 text = "Le Gay game"
 label_settings = SubResource("LabelSettings_j85pe")
 
-[node name="SkierImage" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 117.0
-offset_top = -129.0
-offset_right = 364.0
-offset_bottom = 118.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(123, 123)
-texture = ExtResource("2_wcc7f")
-script = ExtResource("3_3gbfh")
-animAmount = 1.0
-animSpeed = 1.0
-
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 55.0
-offset_top = -93.0
-offset_right = 314.0
-offset_bottom = 89.0
+anchor_right = 1.12
+anchor_bottom = 1.243
+offset_left = 426.0
+offset_top = 431.0
+offset_right = -594.24
+offset_bottom = -184.464
 grow_vertical = 2
+
+[node name="Button1" type="Sprite2D" parent="Buttons"]
+position = Vector2(150, 83)
+scale = Vector2(0.0908203, 0.0908203)
+texture = ExtResource("9_vo50r")
 
 [node name="StartGameButton" type="Button" parent="Buttons"]
 layout_mode = 1
@@ -87,11 +111,20 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -15.5
-offset_bottom = 15.5
+offset_left = 63.0
+offset_top = -44.0
+offset_right = -35.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Credits"
+text = "Start Game
+"
+flat = true
+
+[node name="Button2" type="Sprite2D" parent="Buttons"]
+position = Vector2(-62.816, 83.184)
+scale = Vector2(0.091, 0.091)
+texture = ExtResource("10_wy0ql")
 
 [node name="CreditsButton" type="Button" parent="Buttons"]
 layout_mode = 1
@@ -99,11 +132,20 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -57.0
-offset_bottom = -26.0
+offset_left = -143.816
+offset_top = -39.816
+offset_right = -254.816
+offset_bottom = 31.184
 grow_horizontal = 2
 grow_vertical = 2
-text = "Start game"
+text = "Credits
+"
+flat = true
+
+[node name="Button3" type="Sprite2D" parent="Buttons"]
+position = Vector2(354.184, 80.184)
+scale = Vector2(0.091, 0.091)
+texture = ExtResource("11_vypd7")
 
 [node name="ExitButton" type="Button" parent="Buttons"]
 layout_mode = 1
@@ -111,11 +153,14 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = 24.0
-offset_bottom = 55.0
+offset_left = 267.184
+offset_top = -45.816
+offset_right = 168.184
+offset_bottom = 28.184
 grow_horizontal = 2
 grow_vertical = 2
 text = "Exit"
+flat = true
 
 [connection signal="pressed" from="Buttons/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="Buttons/CreditsButton" to="." method="_on_credits_button_pressed"]
