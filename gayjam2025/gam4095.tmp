@@ -11,11 +11,11 @@
 [ext_resource type="AudioStream" uid="uid://cec4eaymkyt40" path="res://audio/skilift_music.wav" id="5_kgso3"]
 [ext_resource type="Texture2D" uid="uid://2duaqu3p5j2m" path="res://Art/Sprites/snow_mound.png" id="5_om386"]
 [ext_resource type="Texture2D" uid="uid://iu87ps5abrd0" path="res://Art/Sprites/Hissipoika/Cabin.png" id="6_qh3bt"]
+[ext_resource type="Texture2D" uid="uid://c7j4ldl7vtejd" path="res://Art/Sprites/Gate/Gate_4.png" id="7_orhr3"]
 [ext_resource type="Texture2D" uid="uid://xs6enmucxwmp" path="res://Art/Sprites/Hissipoika/HissipoikaMug.png" id="10_rc3ab"]
 [ext_resource type="PackedScene" uid="uid://die1u6xwrnelx" path="res://snow_particles.tscn" id="12_ge6in"]
-[ext_resource type="Texture2D" uid="uid://cogugsnsdwd87" path="res://Art/Sprites/StopBar.png" id="15_cmbwy"]
+[ext_resource type="Texture2D" uid="uid://bg0bxhgpr2k77" path="res://Art/Sprites/Gate/Gate_2.png" id="12_l5uby"]
 [ext_resource type="Texture2D" uid="uid://s7h7c7yutb0l" path="res://Art/Sprites/pole.png" id="15_lfpgl"]
-[ext_resource type="Script" path="res://inGameControl.gd" id="16_lmv38"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f74m5"]
 size = Vector2(237, 280)
@@ -64,7 +64,7 @@ scale = Vector2(0.366667, 0.366667)
 texture = ExtResource("5_om386")
 
 [node name="Skis" type="Sprite2D" parent="."]
-z_index = 50
+z_index = 10
 z_as_relative = false
 position = Vector2(-213, 84)
 scale = Vector2(0.42963, 0.42963)
@@ -94,8 +94,8 @@ visible = false
 z_index = 5
 y_sort_enabled = true
 guyPaths = Array[String](["res://characters/guyBlue.tscn", "res://characters/guyGreen.tscn", "res://characters/guyPurple.tscn", "res://characters/guyRed.tscn", "res://characters/guyYellow.tscn"])
-minSpawnTime = 3.0
-maxSpawnTime = 5.0
+minSpawnTime = 1.0
+maxSpawnTime = 3.0
 
 [node name="SpawnPoint" type="Node2D" parent="GuyManager"]
 z_as_relative = false
@@ -106,13 +106,28 @@ z_as_relative = false
 position = Vector2(-236, 50)
 
 [node name="SpawnTimer" type="Timer" parent="GuyManager"]
-wait_time = 6.0
+wait_time = 5.0
 one_shot = true
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_kgso3")
 volume_db = -5.0
 autoplay = true
+
+[node name="Gate" type="Node2D" parent="."]
+z_index = 5
+position = Vector2(33, 90)
+scale = Vector2(0.725, 0.725)
+
+[node name="Gate2" type="Sprite2D" parent="Gate"]
+position = Vector2(-186, -109)
+scale = Vector2(0.803704, 0.803704)
+texture = ExtResource("12_l5uby")
+
+[node name="Gate4" type="Sprite2D" parent="Gate"]
+position = Vector2(-180, -111)
+scale = Vector2(0.775984, 0.803704)
+texture = ExtResource("7_orhr3")
 
 [node name="Pole" type="Sprite2D" parent="."]
 z_index = -6
@@ -129,32 +144,4 @@ z_index = -5
 position = Vector2(627, -24)
 amount = 500
 
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(393, -337, 464, 413)
-width = 5.0
-default_color = Color(0, 0, 0, 1)
-
-[node name="StopBar" type="Sprite2D" parent="."]
-position = Vector2(78, 147)
-scale = Vector2(0.118293, 0.118293)
-texture = ExtResource("15_cmbwy")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("16_lmv38")
-mainMenu = "res://mainmenu/main_menu.tscn"
-
-[node name="ExitButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = -544.0
-offset_top = -298.0
-offset_right = -470.0
-offset_bottom = -262.0
-text = "QUIT
-"
-
 [connection signal="body_entered" from="LiftFillArea/Area2D" to="LiftFillArea" method="_on_area_2d_body_entered"]
-[connection signal="pressed" from="Control/ExitButton" to="Control" method="_on_exit_button_pressed"]

@@ -94,7 +94,7 @@ visible = false
 z_index = 5
 y_sort_enabled = true
 guyPaths = Array[String](["res://characters/guyBlue.tscn", "res://characters/guyGreen.tscn", "res://characters/guyPurple.tscn", "res://characters/guyRed.tscn", "res://characters/guyYellow.tscn"])
-minSpawnTime = 3.0
+minSpawnTime = 4.0
 maxSpawnTime = 5.0
 
 [node name="SpawnPoint" type="Node2D" parent="GuyManager"]
@@ -145,10 +145,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("16_lmv38")
-mainMenu = "res://mainmenu/main_menu.tscn"
 
 [node name="ExitButton" type="Button" parent="Control"]
-layout_mode = 0
 offset_left = -544.0
 offset_top = -298.0
 offset_right = -470.0

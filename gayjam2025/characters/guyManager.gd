@@ -64,8 +64,8 @@ func spawn_guy(groupId: int, guyScene: PackedScene) -> guy:
 		return
 
 	var guyInstance = guyScene.instantiate() as guy
-	guyInstance.position = spawnPoint.position + Vector2(randf_range(-100, 100), randf_range(-100, 100))
-	guyInstance.targetPoint = walkTarget.position + Vector2(randf_range(-100, 100), randf_range(-100, 100))
+	guyInstance.position = spawnPoint.position + Vector2(randf_range(-30, 30), randf_range(-30, 30))
+	guyInstance.targetPoint = walkTarget.position + Vector2(randf_range(-30, 30), randf_range(-30, 30))
 	guyInstance.groupId = groupId;
 	guyInstance.manager = self;
 
@@ -95,7 +95,7 @@ func playSound(sound: AudioStream) -> void:
 func onSpawnTimerTimout():
 	spawnGroup(randi_range(2, 5));
 
-	spawnPoint.position = Vector2(randf_range(-400, -150), randf_range(-70, 250))
+	spawnPoint.position = Vector2(randf_range(-424, 0), randf_range(273, 200))
 	walkTarget.position = Vector2(randf_range(-400, -150), randf_range(-70, 250))
 
 	spawnTimer.wait_time = randf_range(minSpawnTime, maxSpawnTime);

@@ -10,9 +10,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_47tfh"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 811.896, 114.999, 0, 0, 0, 0, 512.179, 109.965, 0, 0, 0, 0, 398.376, 47.5448, 0, 0, 0, 0, 327.391, -75.2829, 0, 0, 0, 0, 331.898, -347.115)
+"points": PackedVector2Array(0, 0, 0, 0, 624.854, 598.256, 0, 0, 0, 0, 508.799, -503.166)
 }
-point_count = 5
+point_count = 2
 
 [node name="skilift" type="Node2D"]
 position = Vector2(497, 255)
@@ -31,7 +31,7 @@ scale = Vector2(0.887503, 0.993261)
 curve = SubResource("Curve2D_47tfh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(811.896, 114.999)
+position = Vector2(624.854, 598.256)
 rotation = 1.55345
 rotates = false
 loop = false
@@ -41,9 +41,9 @@ speed = 0.2
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
 z_index = 4096
 z_as_relative = false
-position = Vector2(-66.2961, -3.3015)
+position = Vector2(-66.9756, -3.3139)
 rotation = -1.55255
-scale = Vector2(0.424271, 0.379097)
+scale = Vector2(0.424271, 0.377258)
 texture = ExtResource("3_bn3bs")
 
 [node name="SeatManager" parent="Path2D/PathFollow2D/Sprite2D" instance=ExtResource("4_ppkpv")]
