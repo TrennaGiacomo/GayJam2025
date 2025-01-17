@@ -6,12 +6,12 @@ extends Control
 @onready var hissipoika_happy = $HissipoikaHappy
 @onready var hissipoika_sad = $HissipoikaSad
 
+@onready var start_game_button = $Buttons/StartGameButton
+@onready var credits_button = $Buttons/CreditsButton
+@onready var exit_button = $Buttons/ExitButton
+
 func _ready():
 	pass
-	#for node in $Buttons.get_children():
-		#if node is Button:
-			#node.connect("mouse_entered", Callable(self, "_on_button_mouse_entered").bind([node]))
-			#node.connect("mouse_exited", Callable(self, "_on_button_mouse_exited").bind([node]))
 
 func _on_exit_button_pressed():
 	get_tree().quit();
@@ -23,22 +23,18 @@ func _on_credits_button_pressed():
 func _on_start_game_button_pressed():
 	get_tree().change_scene_to_file(mainScene);
 
-#func _on_button_mouse_entered(button: Button):
-	#match button.name:
-		#"StartGameButton":
-			#hissipoika_happy.show()
-			#hissipoika_neutral.hide()
-			#hissipoika_sad.hide()	
-		#"CreditsButton":
-			#hissipoika_happy.show()
-			#hissipoika_neutral.hide()
-			#hissipoika_sad.hide()	
-		#"ExitButton":
-			#hissipoika_happy.hide()
-			#hissipoika_neutral.hide()
-			#hissipoika_sad.show()	
-	#
-#func _on_button_mouse_exited(button: Button):
-	#hissipoika_happy.hide()
-	#hissipoika_neutral.show()
-	#hissipoika_sad.hide()	
+func _process(delta):
+	if start_game_button.is_hovered() or credits_button.is_hovered():
+		hissipoika_happy.show()
+		hissipoika_neutral.hide()
+		hissipoika_sad.hide()
+		
+	elif exit_button.is_hovered():
+		hissipoika_happy.hide()
+		hissipoika_neutral.hide()
+		hissipoika_sad.show()
+		
+	else:
+		hissipoika_happy.hide()
+		hissipoika_neutral.show()
+		hissipoika_sad.hide()
