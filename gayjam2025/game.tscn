@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://w81635vhhmj"]
+[gd_scene load_steps=24 format=3 uid="uid://w81635vhhmj"]
 
 [ext_resource type="Script" path="res://skilift/lift_fill_area.gd" id="1_gp27x"]
 [ext_resource type="Texture2D" uid="uid://dc4n27ic7gjta" path="res://Art/Sprites/Hissipoika/Backdrop.png" id="1_j30rx"]
@@ -15,10 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://die1u6xwrnelx" path="res://snow_particles.tscn" id="12_ge6in"]
 [ext_resource type="Texture2D" uid="uid://cogugsnsdwd87" path="res://Art/Sprites/StopBar.png" id="15_cmbwy"]
 [ext_resource type="Texture2D" uid="uid://s7h7c7yutb0l" path="res://Art/Sprites/pole.png" id="15_lfpgl"]
+[ext_resource type="Texture2D" uid="uid://1j6r5ejlrp4j" path="res://Art/Sprites/Clock_Counter/ClosedCover.png" id="16_etwme"]
 [ext_resource type="Script" path="res://inGameControl.gd" id="16_lmv38"]
 [ext_resource type="Texture2D" uid="uid://c10jgyiy4lak0" path="res://Art/Sprites/Clock_Counter/Clock_Counter.png" id="16_yt144"]
 [ext_resource type="Texture2D" uid="uid://de52aphyx6e28" path="res://Art/Sprites/Clock_Counter/ClockHand.png" id="18_co54v"]
 [ext_resource type="FontFile" uid="uid://cf6ex1qvt6uj2" path="res://GamjaFlower-Regular.ttf" id="18_gdq4c"]
+[ext_resource type="Texture2D" uid="uid://coj5x5fmxfpk8" path="res://Art/Sprites/Clock_Counter/OpenCover.png" id="20_o8x4e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f74m5"]
 size = Vector2(237, 280)
@@ -177,6 +179,18 @@ text = "2"
 label_settings = SubResource("LabelSettings_n2syv")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ClosedCover" type="Sprite2D" parent="Clock_Counter"]
+visible = false
+position = Vector2(10, -68)
+scale = Vector2(0.0957031, 0.0957031)
+texture = ExtResource("16_etwme")
+
+[node name="OpenCover" type="Sprite2D" parent="Clock_Counter"]
+visible = false
+position = Vector2(10, -69)
+scale = Vector2(0.0986328, 0.0986328)
+texture = ExtResource("20_o8x4e")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

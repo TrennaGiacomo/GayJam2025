@@ -16,6 +16,10 @@ class_name skilift
 
 @onready var seat_counter = $"../Clock_Counter/Control/SeatCounter"
 
+@onready var closed_cover = $"../Clock_Counter/ClosedCover"
+@onready var open_cover = $"../Clock_Counter/OpenCover"
+
+
 var placeSound: AudioStream
 var arriveSound: AudioStream
 var leaveSound: AudioStream
@@ -27,6 +31,9 @@ var waiting: bool
 var timeRemaining: float
 
 func _ready():
+	closed_cover.show()
+	open_cover.hide()
+	
 	getNewSkilift();
 	placeSound = load(placeSoundPath) as AudioStream
 	arriveSound = load(arriveSoundPath) as AudioStream
@@ -35,6 +42,7 @@ func _ready():
 func getNewSkilift():
 	currentSize = randi_range(minSize, maxSize);
 	seat_counter.text = str(currentSize)
+	openCover()
 	
 	fillAmount = 0;
 
@@ -97,5 +105,22 @@ func _process(delta):
 		if(timeRemaining < 0):
 			waiting = false;
 			playSound(leaveSound)
-			#Do stuff when time runs out
+			closeCover()
 	pass
+
+func openCover():
+	await wait(.5)
+	closed_cover.hide()
+	open_cover.show()
+	await wait(.5)
+	open_cover.hide()
+
+func closeCover():
+	await wait(.5)
+	open_cover.show()
+	await wait(.5)
+	open_cover.hide()
+	closed_cover.show()
+
+func wait(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout
