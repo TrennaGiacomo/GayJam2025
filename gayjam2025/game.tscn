@@ -45,27 +45,28 @@ position = Vector2(21, -5)
 
 [node name="Backdrop" type="Sprite2D" parent="Cabin"]
 z_index = -5
-position = Vector2(-112, -84)
+position = Vector2(-111, -77)
 scale = Vector2(0.483333, 0.483333)
 texture = ExtResource("1_j30rx")
 
-[node name="HissipoikaMug" type="Sprite2D" parent="Cabin"]
-z_index = -5
-position = Vector2(-88, -153)
-scale = Vector2(0.00878906, 0.00878906)
-texture = ExtResource("10_rc3ab")
-
 [node name="HissipoikaHappy" type="Sprite2D" parent="Cabin"]
 z_index = -5
-position = Vector2(-132, -153)
+position = Vector2(-121, -153)
 scale = Vector2(0.0682927, 0.0682927)
 texture = ExtResource("1_sxsq1")
 
 [node name="Cabin" type="Sprite2D" parent="Cabin"]
 z_index = -5
-position = Vector2(-106, -110)
-scale = Vector2(0.198242, 0.213386)
+position = Vector2(-106, -78)
+rotation = 0.01622
+scale = Vector2(0.379808, 0.45)
 texture = ExtResource("6_qh3bt")
+
+[node name="HissipoikaMug" type="Sprite2D" parent="Cabin"]
+z_index = -5
+position = Vector2(-93, -153)
+scale = Vector2(0.00878906, 0.00878906)
+texture = ExtResource("10_rc3ab")
 
 [node name="SnowMound" type="Sprite2D" parent="."]
 z_index = -5

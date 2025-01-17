@@ -33,35 +33,33 @@ scale = Vector2(0.627778, 0.627778)
 texture = ExtResource("2_a6rfb")
 
 [node name="Backdrop" type="Sprite2D" parent="."]
-position = Vector2(646, 579)
-scale = Vector2(1.39815, 1.39815)
+position = Vector2(663, 619)
+scale = Vector2(1.58148, 1.58148)
 texture = ExtResource("2_mf3hm")
 
 [node name="HissipoikaNeutral" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(585, 403)
+position = Vector2(585, 355)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_eiswi")
 
 [node name="HissipoikaHappy" type="Sprite2D" parent="."]
-position = Vector2(585, 403)
+position = Vector2(585, 355)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_dsxc7")
 
 [node name="HissipoikaSad" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(585, 403)
+position = Vector2(585, 355)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_na20j")
 
 [node name="Cabin" type="Sprite2D" parent="."]
-position = Vector2(662, 499)
-scale = Vector2(0.606445, 0.606445)
+position = Vector2(651, 606)
+scale = Vector2(1.52222, 1.52222)
 texture = ExtResource("2_4naox")
 
 [node name="HissipoikaMug" type="Sprite2D" parent="."]
-position = Vector2(706, 380)
-scale = Vector2(0.0214844, 0.0214844)
+position = Vector2(715, 355)
+scale = Vector2(0.0292969, 0.0292969)
 texture = ExtResource("7_i1q7w")
 
 [node name="Title" type="Label" parent="."]
@@ -69,10 +67,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 368.0
-offset_top = -247.0
-offset_right = 818.0
-offset_bottom = -186.0
+offset_left = 362.0
+offset_top = -306.0
+offset_right = 812.0
+offset_bottom = -245.0
 grow_vertical = 2
 text = "Hissipoika Simulator
 "
