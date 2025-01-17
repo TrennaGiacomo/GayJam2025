@@ -13,6 +13,9 @@ class_name skilift
 @export_file var placeSoundPath: String
 @export_file var arriveSoundPath: String
 @export_file var leaveSoundPath: String
+
+@onready var seat_counter = $"../Clock_Counter/Control/SeatCounter"
+
 var placeSound: AudioStream
 var arriveSound: AudioStream
 var leaveSound: AudioStream
@@ -31,6 +34,7 @@ func _ready():
 
 func getNewSkilift():
 	currentSize = randi_range(minSize, maxSize);
+	seat_counter.text = str(currentSize)
 	
 	fillAmount = 0;
 
