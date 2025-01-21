@@ -125,7 +125,7 @@ stream = ExtResource("5_kgso3")
 volume_db = -5.0
 autoplay = true
 
-[node name="Pole" type="Sprite2D" parent="."]
+[node name="Paul" type="Sprite2D" parent="."]
 z_index = -6
 position = Vector2(-162, -35)
 scale = Vector2(0.416667, 0.416667)
